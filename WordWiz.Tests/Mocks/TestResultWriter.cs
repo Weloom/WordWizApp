@@ -1,0 +1,25 @@
+﻿using System.Text;
+
+namespace WordWiz.Tests.Mocks {
+    public class TestResultWriter : IResultWriter {
+        public Dictionary<string, string> Results { get; } = new Dictionary<string, string>();
+
+        public void WriteCSVResults(Dictionary<string, int> keyValuePairs, string filePath) {
+            var sb = new StringBuilder();
+            foreach(var kvp in keyValuePairs.OrderBy(kvp => kvp.Key)) {
+                sb.AppendLine($"{kvp.Key},{kvp.Value}");
+            }
+
+            Results[filePath] = sb.ToString();
+        }
+
+        public void WriteLineResults(List<string> lines, string filePath) {
+            var sb = new StringBuilder();
+            foreach(var line in lines) {
+                sb.AppendLine(line);
+            }
+
+            Results[filePath] = sb.ToString();
+        }
+    }
+}
