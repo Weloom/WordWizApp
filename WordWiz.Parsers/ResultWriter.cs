@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Implelents features for writing results to a csv file or txt file 
+/// Implements features for writing results to a csv file or txt file 
 /// </summary>
 public class ResultWriter : IResultWriter {
     private readonly string _rootPath;
@@ -7,27 +7,27 @@ public class ResultWriter : IResultWriter {
     /// <summary>
     /// Constructor
     /// </summary>
-    /// <param name="rootPath">A rootpath that is joined with the fiele specific path e.g. "c:\myapp\resuklts\"</param>
+    /// <param name="rootPath">A root path that is joined with the file specific path e.g. "c:\myapp\results\"</param>
     public ResultWriter(string rootPath) => _rootPath = rootPath;
 
-    public void WriteDictionarytoCsvFile(Dictionary<string, int> keyValuePairs, string relativePathAndfileName) {
-        string fullFileName = Path.Join(_rootPath, relativePathAndfileName);
+    public void WriteDictionaryToCsvFile(Dictionary<string, int> dictionary, string relativePathAndFileName) {
+        string fullFileName = Path.Join(_rootPath, relativePathAndFileName);
 
-        //check if directory exists and create it if it doesnt
-        string directoryPath = Path.GetDirectoryName(fullFileName);
+        //check if directory exists and create it if it doesn't
+        string directoryPath = Path.GetDirectoryName(fullFileName) ?? "";
         if(!string.IsNullOrEmpty(directoryPath) && !Directory.Exists(directoryPath)) {
             Directory.CreateDirectory(directoryPath);
         }
 
         using(StreamWriter writer = new StreamWriter(fullFileName)) {
-            foreach(var kvp in keyValuePairs.OrderBy(kvp => kvp.Key)) {
-                writer.WriteLine($"{kvp.Key},{kvp.Value}");
+            foreach(var entry in dictionary.OrderBy(entry => entry.Key)) {
+                writer.WriteLine($"{entry.Key},{entry.Value}");
             }
         }
     }
 
-    public void WriteListToTextFile(List<string> lines, string relativePathAndfileName) {
-        string fullFileName = Path.Join(_rootPath, relativePathAndfileName);
+    public void WriteListToTextFile(List<string> lines, string relativePathAndFileName) {
+        string fullFileName = Path.Join(_rootPath, relativePathAndFileName);
         using(StreamWriter writer = new StreamWriter(fullFileName)) {
             foreach(var line in lines) {
                 writer.WriteLine(line);

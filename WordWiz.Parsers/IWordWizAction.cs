@@ -9,7 +9,7 @@ public interface IWordWizAction {
     ILineAction CreateActionForFile();
 
     /// <summary>
-    /// Use for code performed after files have been parsed. For threadunsafe code.
+    /// Use for code performed after files have been parsed. For thread unsafe code.
     /// </summary>
     void OperationEnd();
 }

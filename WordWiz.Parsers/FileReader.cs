@@ -3,10 +3,13 @@
 
     public FileReader(string rootPath) => _rootPath = rootPath;
 
-    public IEnumerable<string> ReadLines(string relativePathAndfileName = "") {
-        string fullFileName = Path.Join(_rootPath, relativePathAndfileName);
+    public IEnumerable<string>? ReadLines(string relativePathAndFileName = "") {
+        string fullFileName = Path.Join(_rootPath, relativePathAndFileName);
+        if(File.Exists(fullFileName)) {
+            return File.ReadLines(fullFileName);
+        }
 
-        return File.ReadLines(fullFileName);
+        return null;
     }
 
     public IEnumerable<string> GetFileNames(string relativePath = "") {

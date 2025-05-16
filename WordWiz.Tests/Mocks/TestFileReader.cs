@@ -4,8 +4,12 @@
 
         public TestFileReader(Dictionary<string, List<string>> fileContent) => _fileContent = fileContent;
 
-        public IEnumerable<string> ReadLines(string relativePathAndfileName = "") {
-            return _fileContent[relativePathAndfileName];
+        public IEnumerable<string>? ReadLines(string relativePathAndfileName = "") {
+            if(_fileContent.Any(x => x.Key == relativePathAndfileName)) {
+                return _fileContent[relativePathAndfileName];
+            }
+
+            return null;
         }
 
         public IEnumerable<string> GetFileNames(string relativePath = "") {

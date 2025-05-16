@@ -16,8 +16,11 @@ public class WordCountAction : IWordWizAction {
         _resultWriter = resultWriter;
 
         //get list of excluded words
-        foreach(var word in excludeListFileReader.ReadLines(@"\settings\excludelist.txt")) {
-            _excludeList.Add(word.Trim().ToLower());
+        var words = excludeListFileReader.ReadLines(@"\settings\excludelist.txt");
+        if(words != null) {
+            foreach(var word in words) {
+                _excludeList.Add(word.Trim().ToLower());
+            }
         }
     }
 
@@ -29,8 +32,8 @@ public class WordCountAction : IWordWizAction {
 
     /// <summary>
     /// Combines the count of words from all files and writes it to a csv file without excluded files (wordcount.csv).
-    /// Writes collection of excluded words and the number of apperences to a csv file (excludedwordscount.csv)
-    /// Writes all words and their total count to separate csv files based on their startingletter (E.g. "a.txt") 
+    /// Writes collection of excluded words and the number of appearances to a csv file (excludedwordscount.csv)
+    /// Writes all words and their total count to separate csv files based on their starting letter (E.g. "a.txt") 
     /// </summary>
     public void OperationEnd() {
         //combine word counts from all files
@@ -49,16 +52,16 @@ public class WordCountAction : IWordWizAction {
         var filteredWordCount = wordCountsForAllFiles.Where(wc => !excludedWordCount.Contains(wc)).ToDictionary(wc => wc.Key, wc => wc.Value);
 
         // Persist excluded word count to a csv file
-        _resultWriter.WriteDictionarytoCsvFile(excludedWordCount, $"excludedwordscount.csv");
+        _resultWriter.WriteDictionaryToCsvFile(excludedWordCount, $"excludedwordscount.csv");
 
         // Persist the word count to a csv file
-        _resultWriter.WriteDictionarytoCsvFile(filteredWordCount, $"wordcount.csv");
+        _resultWriter.WriteDictionaryToCsvFile(filteredWordCount, $"wordcount.csv");
 
         // Select all the words that start with the same letter and save them to a coresponding file
         var groupedWords = filteredWordCount.GroupBy(wc => wc.Key[0]);
         foreach(var group in groupedWords) {
-            string startingLetter = group.Key.ToString();
-            _resultWriter.WriteListToTextFile(group.Select(group => group.Key).ToList(), $"{startingLetter}.txt");
+            string startingLetter = group.Key.ToString().ToUpper();
+            _resultWriter.WriteListToTextFile(group.Select(group => group.Key).ToList(), $"FILE_{startingLetter}.txt");
         }
     }
 }

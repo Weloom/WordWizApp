@@ -2,7 +2,6 @@
 
 namespace WordWiz {
     public class Program {
-
         public static void Main(string[] args) {
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(o => {
                 Console.WriteLine($"Performs operations on files in '{o.SourceDictionary}'. Updates '{o.SourceDictionary}'");
@@ -26,9 +25,7 @@ namespace WordWiz {
 
 /*
  TODO:
-  *Kill "kvp" everywhere
  * break action into two
- * Use Chain of responsibility pattern
  
  * Create all tests
  
@@ -37,18 +34,4 @@ namespace WordWiz {
  * handle if files are empty, list of warning - log file
  * handle if excludelist doesnt exist * run real app
  * Error handling
- 
- * optimize mem. usage
-
- * Comments
- * NLP alternative
-
-Notes:
-no tests for fielreader or resultwriter. there should be
-Could have introduced the chain of responsibility pattern to split the action
-SHould enumetrate actions over files, not the other way around
-SHould test on file size and add custom limit based on filesizes and count
-SHould make sure that collections where dropped asap
-Create results dir if it doesnt exist
-
  */

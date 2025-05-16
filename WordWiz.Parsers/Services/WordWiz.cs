@@ -1,4 +1,6 @@
-﻿namespace WordWiz.Parsers.Services {
+﻿// Ignore Spelling: Wiz
+
+namespace WordWiz.Parsers.Services {
     /// <summary>
     /// Service accepts a number of actions supporting the <see cref="IWordWizAction"/> and executes them against oen or more text files.
     /// </summary>
@@ -10,7 +12,7 @@
         /// 
         /// </summary>
         /// <param name="fileReader">Used to access the lists of files to parse.</param>
-        /// <param name="actions">List of actions that are to be executed agains the files found by the fileReader.</param>
+        /// <param name="actions">List of actions that are to be executed against the files found by the fileReader.</param>
         public WordWiz(IFileReader fileReader, List<IWordWizAction> actions) => (_fileReader, _actions) = (fileReader, actions);
 
         /// <summary>
