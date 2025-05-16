@@ -1,5 +1,8 @@
-﻿public interface IResultWriter {
-    void WriteCSVResults(Dictionary<string, int> keyValuePairs, string filePath);
+﻿/// <summary>
+/// Used to abstract how to persist results.
+/// </summary>
+public interface IResultWriter {
+    void WriteDictionarytoCsvFile(Dictionary<string, int> keyValuePairs, string filePath);
 
-    void WriteLineResults(List<string> lines, string filePath);
+    void WriteListToTextFile(List<string> lines, string filePath);
 }

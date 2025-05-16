@@ -1,9 +1,16 @@
-﻿public class ResultWriter : IResultWriter {
+﻿/// <summary>
+/// Implelents features for writing results to a csv file or txt file 
+/// </summary>
+public class ResultWriter : IResultWriter {
     private readonly string _rootPath;
 
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="rootPath">A rootpath that is joined with the fiele specific path e.g. "c:\myapp\resuklts\"</param>
     public ResultWriter(string rootPath) => _rootPath = rootPath;
 
-    public void WriteCSVResults(Dictionary<string, int> keyValuePairs, string relativePathAndfileName) {
+    public void WriteDictionarytoCsvFile(Dictionary<string, int> keyValuePairs, string relativePathAndfileName) {
         string fullFileName = Path.Join(_rootPath, relativePathAndfileName);
 
         //check if directory exists and create it if it doesnt
@@ -19,7 +26,7 @@
         }
     }
 
-    public void WriteLineResults(List<string> lines, string relativePathAndfileName) {
+    public void WriteListToTextFile(List<string> lines, string relativePathAndfileName) {
         string fullFileName = Path.Join(_rootPath, relativePathAndfileName);
         using(StreamWriter writer = new StreamWriter(fullFileName)) {
             foreach(var line in lines) {

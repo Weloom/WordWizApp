@@ -1,8 +1,14 @@
-﻿public class WordCountFileAction : ILineAction {
+﻿/// <summary>
+/// Performs wordcount on an individual file
+/// </summary>
+public class WordCountFileAction : ILineAction {
     private Dictionary<string, int> _wordCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
     public Dictionary<string, int> WordCounts { get => _wordCounts; }
 
+    /// <summary>
+    /// Identifies individual words in a line of text and counts them
+    /// </summary>
     public void Execute(string line) {
         string[] words = line.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
         foreach(string word in words) {

@@ -7,12 +7,11 @@ namespace WordWiz {
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(o => {
                 Console.WriteLine($"Performs operations on files in '{o.SourceDictionary}'. Updates '{o.SourceDictionary}'");
 
-                // get full path of the source dictionary
                 string fullSourceDirectory = Path.GetFullPath(o.SourceDictionary ?? "");
                 string fullTargetDirectory = Path.GetFullPath(o.TargetDictionary ?? "");
                 var rootDir = AppDomain.CurrentDomain.BaseDirectory;
 
-                //List of actions contains currently only a single, but could be extended with e.g. late binding (Factory pattern)g
+                //List of actions contains currently only a single action, but could be extended with e.g. late binding (Factory pattern)g
                 var actions = new List<IWordWizAction> {
                     new WordCountAction(new ResultWriter(fullTargetDirectory), new FileReader(rootDir))
                 };
