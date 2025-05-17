@@ -12,7 +12,7 @@
             return null;
         }
 
-        public IEnumerable<string> GetFileNames(string relativePath = "") {
+        public IEnumerable<string>? GetFileNames(string relativePath = "") {
             return _fileContent.Select(_fileContent => _fileContent.Key).ToList();
         }
     }

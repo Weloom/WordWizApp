@@ -26,7 +26,7 @@ namespace WordWiz.Tests {
             action.Setup(x => x.CreateActionForFile()).Returns(new Mock<ILineAction>().Object);
             actions.Add(action.Object);
 
-            var sut = new WordWiz.Parsers.Services.WordWiz(fileReader.Object, actions);
+            var sut = new WordWiz.Parsers.Services.WordWizard(fileReader.Object, actions);
             sut.ParseFiles();
 
             fileReader.Verify(x => x.GetFileNames(It.IsAny<string>()), Times.Once);

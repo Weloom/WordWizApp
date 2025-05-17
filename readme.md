@@ -1,4 +1,4 @@
-"WordWiz" (Short for word wizard) is a console app that tries to solve the DB coding challange "Word Counter". The goals for this implementation is:
+"WordWiz" (Short for word wizard) is a .NET9 console app, coded in C#, that tries to solve the DB coding challange "Word Counter". Some focus points for the choice of implementation are:
 * Expressive code, that is intueltively easy to understand
 * Clear separation of responsibility
 * Avoid complexity in code
@@ -6,16 +6,17 @@
 * Standardization ensures option to execute word cound (And future) operations in parallel.
 * Standardization should help, the next developer that adds extensions avoids thread issues
 
-
 # Project files
 
 ## WordWiz.App
-A thin console app executing the main WordWizz service find in the Parsers project.
+A thin console app executing the main WordWizzard service found in the Parsers project.
 
 Execution parameter examples:
 * WordWizApp.exe _(Uses defaults)_
 * WordWizApp.exe --sourcedirectory \myfiles --targetdirectory \myresults
 * WordWizApp.exe  -s \myfiles -t \myresults
+
+Note: target directory will be created if it doesn't exist. If the source directory doesn't exist a warning is issued.
 
 ## WordWiz.Parsers
 Contains the main service and interfaces that defines the actiosn that can be performed on the text files.

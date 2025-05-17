@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Used by actions that must perform action on one or more files, controlled by the <see cref="WordWiz.Parsers.Services.WordWiz"/>
+/// Used by actions that must perform action on one or more files, controlled by the <see cref="WordWiz.Parsers.Services.WordWizard"/>
 /// </summary>
 public interface IWordWizAction {
     /// <summary>

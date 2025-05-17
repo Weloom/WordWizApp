@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Used by the <see cref="WordWiz.Parsers.Services.WordWiz"/> and handles access to an individual file and instantiates a line parser for each lin ein the file.
+/// Used by the <see cref="WordWiz.Parsers.Services.WordWizard"/> and handles access to an individual file and instantiates a line parser for each lin ein the file.
 /// Actual file access is handled by the fileReader, so the 'file' can be of any data source type.
 /// </summary>
 public class FileParser {

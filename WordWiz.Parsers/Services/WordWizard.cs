@@ -2,16 +2,16 @@
     /// <summary>
     /// Service accepts a number of actions supporting the <see cref="IWordWizAction"/> and executes them against oen or more text files.
     /// </summary>
-    public class WordWiz {
+    public class WordWizard {
         private readonly List<IWordWizAction> _actions;
         private readonly IFileReader _fileReader;
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
         /// <param name="fileReader">Used to access the lists of files to parse.</param>
         /// <param name="actions">List of actions that are to be executed against the files found by the fileReader.</param>
-        public WordWiz(IFileReader fileReader, List<IWordWizAction> actions) => (_fileReader, _actions) = (fileReader, actions);
+        public WordWizard(IFileReader fileReader, List<IWordWizAction> actions) => (_fileReader, _actions) = (fileReader, actions);
 
         /// <summary>
         /// For each action enumerate all files found by the fileReader in parallel. 
@@ -19,8 +19,12 @@
         public void ParseFiles() {
             foreach(var action in _actions) {
                 try {
-                    // Process each file in parallel
                     var files = _fileReader.GetFileNames();
+                    if(!(files?.Any() ?? false)) {
+                        throw new Exception("Source directory doesn't exist or it is empty");
+                    }
+
+                    // Try process each found file in parallel
                     Parallel.ForEach(files, filePath => {
                         try {
                             var fileParser = new FileParser(_fileReader);

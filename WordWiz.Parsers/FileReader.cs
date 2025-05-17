@@ -12,9 +12,13 @@
         return null;
     }
 
-    public IEnumerable<string> GetFileNames(string relativePath = "") {
+    public IEnumerable<string>? GetFileNames(string relativePath = "") {
         string fullPath = Path.Join(_rootPath, relativePath);
-        return Directory.EnumerateFiles(fullPath);
+        if(Directory.Exists(fullPath)) {
+            return Directory.EnumerateFiles(fullPath);
+        }
+
+        return null;
     }
 }
 

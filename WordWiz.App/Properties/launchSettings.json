@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "Default": {
+      "commandName": "Project"
+    },
+    "long parameter names": {
+      "commandName": "Project",
+      "commandLineArgs": "--sourcedirectory myfiles --targetdirectory myresults\r\n"
+    },
+    "Short parameter names": {
+      "commandName": "Project",
+      "commandLineArgs": "-s myfiles -t myresults"
+    },
+    "Rooted paths": {
+      "commandName": "Project",
+      "commandLineArgs": "-s c:\\testing\\files -t c:\\testing\\results"
+    }
+  }
+}
