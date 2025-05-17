@@ -13,8 +13,10 @@ A thin console app executing the main WordWizzard service found in the Parsers p
 
 Execution parameter examples:
 * WordWizApp.exe _(Uses defaults)_
-* WordWizApp.exe --sourcedirectory \myfiles --targetdirectory \myresults
-* WordWizApp.exe  -s \myfiles -t \myresults
+* WordWizApp.exe --sourcedirectory myfiles --targetdirectory myresults
+* WordWizApp.exe  -s myfiles -t myresults
+* WordWizApp.exe  -s .\myfiles -t .\myresults
+* WordWizApp.exe  -s ..\\..\myfiles -t ..\\..\myresults
 
 Note: target directory will be created if it doesn't exist. If the source directory doesn't exist a warning is issued.
 
@@ -55,5 +57,5 @@ To optimize the code for multiple CPUs, the WordWiz service runs all files in pa
 # Still missing
 * No tests exist for the FileReader og ResultWriter. It would require use of actual test files.
 * A lot of tests in general.
-* Logging
-* Better exception handling + test thereof.
+* Exceptionhandling in the Parsers surrounding calls to the customizable action classes.
+* Logging options and levels
