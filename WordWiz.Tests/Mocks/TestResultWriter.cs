@@ -4,7 +4,7 @@ namespace WordWiz.Tests.Mocks {
     public class TestResultWriter : IResultWriter {
         public Dictionary<string, string> Results { get; } = new Dictionary<string, string>();
 
-        public void WriteDictionarytoCsvFile(Dictionary<string, int> dictionary, string filePath) {
+        public void WriteDictionaryToCsvFile(Dictionary<string, int> dictionary, string filePath) {
             var sb = new StringBuilder();
             foreach(var entry in dictionary.OrderBy(entry => entry.Key)) {
                 sb.AppendLine($"{entry.Key},{entry.Value}");

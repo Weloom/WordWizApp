@@ -1,6 +1,4 @@
-﻿// Ignore Spelling: Wiz
-
-namespace WordWiz.Parsers.Services {
+﻿namespace WordWiz.Parsers.Services {
     /// <summary>
     /// Service accepts a number of actions supporting the <see cref="IWordWizAction"/> and executes them against oen or more text files.
     /// </summary>

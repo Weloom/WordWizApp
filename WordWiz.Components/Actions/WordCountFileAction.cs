@@ -1,5 +1,5 @@
 ﻿/// <summary>
-/// Performs word count on an individual file
+/// Performs word count on an individual file, line by line.
 /// </summary>
 public class WordCountFileAction : ILineAction {
     private Dictionary<string, int> _wordCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);

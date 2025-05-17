@@ -1,7 +1,16 @@
+"WordWiz" (Short for word wizard) is a console app that tries to solve the DB coding challange "Word Counter". The goals for this implementation is:
+* Expressive code, that is intueltively easy to understand
+* Clear separation of responsibility
+* Avoid complexity in code
+* Offer standadization (Use of interface and factories) of implementation to ensure easy extension of functionality
+* Standardization ensures option to execute word cound (And future) operations in parallel.
+* Standardization should help, the next developer that adds extensions avoids thread issues
+
+
 # Project files
 
 ## WordWiz.App
-A thin console app executing the main WordWizz service fiund in the Parsers project.
+A thin console app executing the main WordWizz service find in the Parsers project.
 
 Execution parameter examples:
 * WordWizApp.exe _(Uses defaults)_
@@ -40,4 +49,10 @@ To optimize the code for multiple CPUs, the WordWiz service runs all files in pa
 * Better memory cleanup of intermediate in-mem dictionaries
 * Word recognision is way too simple. Alternatively NLP can be used.
 * A Factory pattern is required to make it possible to further customize the operations on the files. E.g. via late binding.
-* A Chain of Responsibility pattern shouold be used, so the actions could perform chains of operations on the same data. 
+* A Chain of Responsibility pattern shouold be used, so the actions could perform chains of operations on the same data.
+
+# Still missing
+* No tests exist for the FileReader og ResultWriter. It would require use of actual test files.
+* A lot of tests in general.
+* Logging
+* Better exception handling + test thereof.

@@ -2,7 +2,7 @@
 
 namespace WordWiz.Components.Tests {
     [TestClass]
-    public sealed class WordCountTests {
+    public sealed class WordCountActionTests {
         [TestMethod]
         public void ParseFile_ExcludeList_WordExcluded() {
             var files = new Dictionary<string, List<string>> {
@@ -83,6 +83,12 @@ namespace WordWiz.Components.Tests {
             Assert.AreEqual("orange", resultWriter.Results["FILE_O.txt"].Trim());
             Assert.AreEqual("", resultWriter.Results["excludedwordscount.csv"].Trim());
             Assert.AreEqual("apple,2\r\norange,2", resultWriter.Results["wordcount.csv"].Trim());
+        }
+
+        [TestMethod]
+        [Ignore]
+        public void ParseFile_SoManyMoreTests() {
+            //...
         }
     }
 }
