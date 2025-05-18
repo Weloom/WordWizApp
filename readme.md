@@ -1,9 +1,9 @@
-"WordWiz" (Short for word wizard) is a .NET9 console app, coded in C#, that tries to solve the DB coding challange "Word Counter". Some focus points for the choice of implementation are:
-* Expressive code, that is intueltively easy to understand
+"WordWiz" (Short for word wizard) is a .NET9 console app, coded in C#, that tries to solve the DB coding challenge "Word Counter". Some focus points for the choice of implementation are:
+* Expressive code, that is intuitively easy to understand
 * Clear separation of responsibility
 * Avoid complexity in code
-* Offer standadization (Use of interface and factories) of implementation to ensure easy extension of functionality
-* Standardization ensures option to execute word cound (And future) operations in parallel.
+* Offer standardization (Use of interface and factories) of implementation to ensure easy extension of functionality
+* Standardization ensures option to execute word count (And future) operations in parallel.
 * Standardization should help, the next developer that adds extensions avoids thread issues
 
 # Project files
@@ -21,12 +21,12 @@ Execution parameter examples:
 Note: target directory will be created if it doesn't exist. If the source directory doesn't exist a warning is issued.
 
 ## WordWiz.Parsers
-Contains the main service and interfaces that defines the actiosn that can be performed on the text files.
-The main service also uses to parsers on
+Contains the main service and interfaces that defines the actions that can be performed on the text files.
+The main service also uses two parsers on
 * File level
 * Line level 
 
-_(The parsers don't do much, but they encapsulat the responsibilities of the main service well)_
+_(The parsers don't do much, but they encapsulate the responsibilities of the main service well)_
 
 ## WordWiz.Components
 Contains custom actions that uses the interfaces defined in the Parsers project. Realistically this project would nto be part of the main solution.
@@ -38,24 +38,24 @@ The operations performed on the text files are dined as actions on two levels:
 
 # Testing
 Two test projects exist for
-* WordWiz Generel: Parsers etc.
+* WordWiz General: Parsers etc.
 * WordWiz Components: Custom operations
 
 ## Test mocking
 File access is abstracted out, so the WordWiz service
 
 # Parallelism
-To optimize the code for multiple CPUs, the WordWiz service runs all files in parallel, and pushes any threadunsafe operations till after the files are processed, like collecting the reading from all the individual file actions.
+To optimize the code for multiple CPUs, the WordWiz service runs all files in parallel, and pushes any thread unsafe operations till after the files are processed, like collecting the reading from all the individual file actions.
 
 # Required optimization
-* Option to finetune parallism, based on the files count and size
+* Option to fine tune parallelism, based on the files count and size
 * Better memory cleanup of intermediate in-mem dictionaries
-* Word recognision is way too simple. Alternatively NLP can be used.
+* Word recognition is way too simple. Alternatively NLP can be used.
 * A Factory pattern is required to make it possible to further customize the operations on the files. E.g. via late binding.
-* A Chain of Responsibility pattern shouold be used, so the actions could perform chains of operations on the same data.
+* A Chain of Responsibility pattern should be used, so the actions could perform chains of operations on the same data.
 
 # Still missing
 * No tests exist for the FileReader og ResultWriter. It would require use of actual test files.
 * A lot of tests in general.
-* Exceptionhandling in the Parsers surrounding calls to the customizable action classes.
+* Exception handling in the Parsers surrounding calls to the customizable action classes.
 * Logging options and levels
