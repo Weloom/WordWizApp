@@ -21,8 +21,8 @@ Execution parameter examples:
 Note: target directory will be created if it doesn't exist. If the source directory doesn't exist a warning is issued.
 
 ## WordWiz.Parsers
-Contains the main service and interfaces that defines the actions that can be performed on the text files.
-The main service also uses two parsers on
+Contains the main service WordWizzard and interfaces that defines the actions that can be performed on the text files.
+The main service WordWizzard also uses two parsers on
 * File level
 * Line level 
 
